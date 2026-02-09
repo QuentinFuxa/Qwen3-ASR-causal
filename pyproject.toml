@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qwen3-asr-causal"
+version = "0.1.0"
+description = "Standalone causal streaming runtime for Qwen3-ASR"
+readme = "README.md"
+requires-python = ">=3.11, <3.14"
+license = { file = "LICENSE" }
+authors = [{ name = "Quentin Fuxa", email = "quentin.fuxa@gmail.com" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "huggingface-hub>=0.25.0",
+    "numpy",
+    "qwen-asr>=0.0.6",
+    "soundfile",
+    "torch>=2.0.0",
+    "transformers>=4.57",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+vllm = [
+    'vllm[audio]>=0.20.0; sys_platform == "linux"',
+    'torchvision; sys_platform == "linux" and platform_machine == "x86_64"',
+]
+
+[project.urls]
+Homepage = "https://github.com/QuentinFuxa/Qwen3-ASR-causal"
+Model = "https://huggingface.co/qfuxa/qwen3-asr-0.6b-streaming"
+
+[project.scripts]
+qwen3-asr-causal = "qwen3_asr_causal.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
