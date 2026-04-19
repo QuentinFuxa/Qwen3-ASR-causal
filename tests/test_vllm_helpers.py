@@ -22,6 +22,13 @@ def test_vllm_text_is_causal_default():
     )
 
 
+def test_vllm_live_is_public_decoder_backend():
+    assert (
+        _resolve_causal_decoder_backend({"qwen3_vllm_causal_decoder_backend": "vllm-live"}, "causal")
+        == "vllm-live"
+    )
+
+
 def test_invalid_causal_decoder_backend_fails():
     with pytest.raises(ValueError):
         _resolve_causal_decoder_backend({"qwen3_vllm_causal_decoder_backend": "bad"}, "causal")
