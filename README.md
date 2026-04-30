@@ -73,11 +73,8 @@ scientific English, human references, Whisper text normalization.
 
 | system | scoring contract | WER | compute per second of audio |
 |---|---|---:|---|
-| Qwen3-ASR-0.6B, VAD-segmented | offline | **7.6** | n/a |
-| windowed streaming backend | streaming final transcript | 8.4 | 126 GFLOPs avg, growing to 172 within each segment |
-| causal audio tower | causal final transcript, offline comparison | **18.1** | **42 GFLOPs, constant** |
-| causal audio tower | real streaming, no rewrite, 250 ms tail cut + EOS flush | **18.1** | **42 GFLOPs, constant** |
-| causal audio tower | committed-only live prefix, no EOS flush | 19.4 | **42 GFLOPs, constant** |
+| Streaming Qwen3-ASR | no rewrite, 250 ms tail cut + EOS flush | **12.6** | 126 GFLOPs avg, growing to 172 within each segment |
+| Streaming Qwen3-ASR causal | no rewrite, 250 ms tail cut + EOS flush | **18.1** | **42 GFLOPs, constant** |
 
 ![Streaming RTF](assets/rtf_combined.svg)
 
