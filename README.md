@@ -98,7 +98,7 @@ quality comparisons.
 ## Python
 
 ```python
-from qwen3_asr_causal import Qwen3StreamingASR
+from qwen3_asr_causal import Qwen3StreamingASR, Qwen3StreamingOnlineProcessor
 
 asr = Qwen3StreamingASR(
     lan="en",
@@ -106,7 +106,7 @@ asr = Qwen3StreamingASR(
     qwen3_streaming_audio_backend="causal",
     qwen3_streaming_tower_checkpoint="qfuxa/qwen3-asr-0.6b-streaming",
 )
-processor = asr.create_online_processor()
+processor = Qwen3StreamingOnlineProcessor(asr)
 ```
 
 ## Development

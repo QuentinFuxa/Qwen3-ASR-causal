@@ -35,6 +35,6 @@ def test_invalid_causal_decoder_backend_fails():
 
 
 def test_live_cache_salt_roundtrip():
-    encoded = _encode_vllm_live_cache_salt("stream", 12)
+    encoded = _encode_vllm_live_cache_salt("stream", prefix_keep_len=12)
 
     assert _decode_vllm_live_cache_salt(encoded) == ("stream", 12)
