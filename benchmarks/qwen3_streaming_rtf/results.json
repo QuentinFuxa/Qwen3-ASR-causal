@@ -1,0 +1,60 @@
+{
+  "date": "2026-06-14",
+  "metric": "streaming inference realtime factor",
+  "lower_is_better": true,
+  "protocol": "Streaming ASR generation loop, excluding model load. Real-streaming WER replay cuts the live hypothesis tail by 250 ms and preserves the previously published prefix; this affects scored text, not model compute time.",
+  "systems": [
+    {
+      "hardware": "Apple M5 Metal",
+      "family": "metal",
+      "mode": "normal",
+      "label": "Qwen3-ASR normal",
+      "backend": "qwen3-vllm-metal",
+      "rtf": 0.261602,
+      "rtf_kind": "inference_rtf",
+      "dataset": "local en_30s smoke",
+      "audio_duration_sec": 30.0,
+      "source": "benchmarks/macos_qwen3/runs/metal_decoder_rolling_en30/results.json"
+    },
+    {
+      "hardware": "Apple M5 Metal",
+      "family": "metal",
+      "mode": "causal",
+      "label": "Qwen3 causal tower",
+      "backend": "qwen3-vllm-metal causal",
+      "rtf": 0.156063,
+      "rtf_kind": "inference_rtf",
+      "dataset": "local en_30s smoke",
+      "audio_duration_sec": 30.0,
+      "source": "benchmarks/macos_qwen3/runs/metal_decoder_rolling_en30/results.json"
+    },
+    {
+      "hardware": "NVIDIA H100 HF Transformers",
+      "family": "h100",
+      "mode": "normal",
+      "label": "Qwen3-ASR normal",
+      "backend": "qwen3-streaming windowed",
+      "rtf": 0.292799,
+      "rtf_kind": "realtime_factor_total",
+      "dataset": "MCIF-21 long-form",
+      "audio_duration_sec": 7105.531375,
+      "source": "experiments/qwen3-causal/runs/jl_20260610/surgery_left12_seg200_chunk2000.summary.json"
+    },
+    {
+      "hardware": "NVIDIA H100 HF Transformers",
+      "family": "h100",
+      "mode": "causal",
+      "label": "Qwen3 causal tower",
+      "backend": "qwen3-streaming causal prod",
+      "rtf": 0.160185,
+      "rtf_kind": "weighted from per-file realtime_factor",
+      "dataset": "MCIF-21 long-form",
+      "audio_duration_sec": 7105.531375,
+      "source": "/Users/quentin/Downloads/qwen3_checkpoints/ws4_bench_artifacts.tgz:ws4_bench/mcif21_prod_causal.jsonl"
+    }
+  ],
+  "notes": [
+    "The H100 causal dual-WER replay in /Users/quentin/Downloads/qwen3_checkpoints/dual_wer_artifacts.tgz confirms final transcript WER equals real-streaming no-rewrite WER for this 21-file run.",
+    "The optimized H100 experiment harness reached about 0.109 RTF for the same causal policy; the plotted H100 causal value is the packaged production stack measurement."
+  ]
+}

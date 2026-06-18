@@ -55,7 +55,7 @@ QWEN3_STREAMING_MODEL_MAPPING = {
 def _missing_dependency_error(reason: str) -> ImportError:
     return ImportError(
         "qwen3-streaming requires torch, transformers and the qwen-asr package. "
-        "Install with: pip install 'qwen3-asr-causal'. "
+        "Install with: pip install 'qwen3-asr-causal[streaming]'. "
         f"Details: {reason}"
     )
 

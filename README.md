@@ -12,13 +12,20 @@ extractor from [Qwen/Qwen3-ASR-0.6B](https://huggingface.co/Qwen/Qwen3-ASR-0.6B)
 ## Install
 
 ```bash
-pip install -e .
+pip install -e ".[streaming]"
 ```
 
-For CUDA/vLLM serving:
+For CUDA/vLLM serving, including the causal audio tower path:
 
 ```bash
 pip install -e ".[vllm]"
+```
+
+For Apple Silicon vLLM Metal serving, install vLLM with the official
+vllm-metal instructions first, then install the Metal extra:
+
+```bash
+pip install -e ".[metal]"
 ```
 
 ## Usage
@@ -47,6 +54,9 @@ qwen3-asr-causal transcribe audio.wav \
   --decoder-backend vllm-text \
   --language en
 ```
+
+The Apple Silicon backend exposes the same runtime through
+`qwen3_asr_causal.metal` for WhisperLiveKit and local benchmark integration.
 
 ## How it works
 
@@ -120,6 +130,10 @@ Real inference is opt-in:
 ```bash
 QWEN3_ASR_CAUSAL_E2E=1 pytest tests/test_e2e.py
 ```
+
+The ongoing research notebooks, training scripts, run logs, and WER/RTF
+benchmarks live in `experiments/qwen3-causal/` and `benchmarks/`. WhisperLiveKit
+imports this package instead of carrying a second copy of the Qwen runtime.
 
 ## License
 

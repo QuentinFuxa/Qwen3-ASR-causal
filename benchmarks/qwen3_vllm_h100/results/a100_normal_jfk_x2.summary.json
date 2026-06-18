@@ -1,0 +1,23 @@
+{
+  "mode": "normal",
+  "measurement_stack": "vLLM in-process CUDA",
+  "measurement_protocol": "streaming no-past-rewrite with 250 ms holdback",
+  "hardware": "NVIDIA A100-PCIE-40GB",
+  "platform": "Linux-6.8.0-100-generic-x86_64-with-glibc2.35",
+  "torch_version": "2.11.0+cu129",
+  "cuda_version": "12.9",
+  "vllm_version": "0.23.0",
+  "model_size": "0.6b",
+  "language": "en",
+  "chunk_sec": 1.0,
+  "vllm_max_model_len": 8192,
+  "qwen3_vllm_audio_backend": "standard",
+  "qwen3_vllm_tower_checkpoint": "",
+  "qwen3_vllm_left_context_sec": 15.0,
+  "qwen3_vllm_block_frames": 192,
+  "count": 1,
+  "audio_duration_total_sec": 22.0,
+  "latency_total_sec": 3.2143004247918725,
+  "realtime_factor_total": 0.14610456476326694,
+  "realtime_factor_mean": 0.14610456476326694
+}

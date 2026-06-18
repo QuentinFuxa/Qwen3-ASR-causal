@@ -1,0 +1,3 @@
+system,label,n_samples,total_audio_s,weighted_stream_wer,avg_stream_wer,inference_rtf,wall_rtf,speedup_vs_qwen3_metal,speedup_vs_qwen3_windowed,avg_call_ms,calls_per_audio_min
+qwen3-metal,Qwen3-ASR 0.6B normal streaming (vLLM Metal),1,30.0,0.076923,0.076923,0.3572,0.422133,1.0,,714.426,30.0
+qwen3-causal,Qwen3-ASR 0.6B causal streaming tower,1,30.0,0.153846,0.153846,0.2223,0.299733,1.607,,196.16,68.0
